@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:StudentProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+        <Window.DataContext>
+            <viewmodel:StudentViewModel/>
+        </Window.DataContext>
     <Grid>
 
     </Grid>
