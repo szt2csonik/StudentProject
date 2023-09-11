@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using StudentProjekt.Models;
 
-namespace StudentProject.ViewModel
+namespace StudentProjekt.ViewModel
 {
-    internal class StudentViewModel
+    public partial class StudentViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private Student student;
+
+
+        public StudentViewModel()
+        {
+            student = new Student();
+        }
     }
 }
