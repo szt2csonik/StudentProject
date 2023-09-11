@@ -62,7 +62,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label>Születési év:</Label>
-                    <Label Content="{Binding Student.SchoolYear}"></Label>
+                    <Label Content="{Binding Student.BirthsDay}"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label>Évfolyam és osztály:</Label>
