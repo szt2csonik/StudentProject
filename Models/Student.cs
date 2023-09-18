@@ -31,5 +31,10 @@ namespace StudentProjekt.Models
         public int SchoolYear { get; set; }
         public SchoolClassType SchoolClass { get; set; }
         public string EducationLevel { get; set; }
+
+        public override string ToString()
+        {
+            return $"{LastName} {FirstName} ({SchoolYear}.{SchoolClass}) - ({String.Format("{0:yyyy.MM.dd.}", BirthsDay)})";
+        }
     }
 }

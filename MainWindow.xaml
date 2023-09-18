@@ -34,12 +34,24 @@
         <Label Grid.Row="4" Grid.Column="0">Évfolyam:</Label>
         <Label Grid.Row="5" Grid.Column="0">Osztály:</Label>
         <Label Grid.Row="6" Grid.Column="0">Tanulmányi szint:</Label>
-        <Button Grid.Row="7" Grid.ColumnSpan="2" Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80">Mentés</Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2">
+            <Button  Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80" Content="Új adat"
+                Command="{Binding DoNewStudentCommand}"
+                />
+            <Button  Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80" Content="Mentés"
+                Command="{Binding DoSaveCommand}"
+                CommandParameter="{Binding SelectedStudent}"
+                />
+            <Button HorizontalAlignment="Right" MinWidth="80" Content="Törlés" 
+                Command="{Binding DoRemoveCommand}"
+                CommandParameter="{Binding SelectedStudent}"
+            />
+        </StackPanel>
 
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding Student.LastName}"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding Student.FirstName}"></TextBox>
-        <DatePicker Grid.Row="3" Grid.Column="1" Margin="2 2 2 2" SelectedDate="{Binding Student.BirthsDay}"></DatePicker>
-        <xwpftk:IntegerUpDown Grid.Row="4" Grid.Column="1" Margin="2 2 100 2" Minimum="9" Maximum="14" Value="{Binding Student.SchoolYear}"></xwpftk:IntegerUpDown>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding SelectedStudent.LastName}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding SelectedStudent.FirstName}"></TextBox>
+        <DatePicker Grid.Row="3" Grid.Column="1" Margin="2 2 2 2" SelectedDate="{Binding SelectedStudent.BirthsDay}"></DatePicker>
+        <xwpftk:IntegerUpDown Grid.Row="4" Grid.Column="1" Margin="2 2 100 2" Minimum="9" Maximum="14" Value="{Binding SelectedStudent.SchoolYear}"></xwpftk:IntegerUpDown> >
         <StackPanel Grid.Row="5" Grid.Column="1">
             <RadioButton GroupName="schoolclass" Margin="2 4 2 2">a  osztály</RadioButton>
             <RadioButton GroupName="schoolclass" Margin="2 4 2 2">b  osztály</RadioButton>
@@ -50,35 +62,12 @@
                   SelectedItem="{Binding Student.EducationLevel}"
                   SelectedIndex="0">
         </ComboBox>
-        <GroupBox Grid.Row="8" Grid.ColumnSpan="2">
-            <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Margin="2 10 2 2">
-                <StackPanel Orientation="Horizontal">
-                    <Label>Vezeték név:</Label>
-                    <Label Content="{Binding Student.LastName}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Kereszt név:</Label>
-                    <Label Content="{Binding Student.FirstName}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Születési év:</Label>
-                    <Label Content="{Binding Student.BirthsDay}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Évfolyam és osztály:</Label>
-                    <Label Content="{Binding Student.SchoolClass}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Tanulmányi szint:</Label>
-                    <Label Content="{Binding Student.EducationLevel}"></Label>
-                </StackPanel>
-            </StackPanel>
-            <GroupBox.Header>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Icon\student.png" Width="32" ></Image>
-                    <Label>A diák adatok</Label>
-                </StackPanel>
-            </GroupBox.Header>
-        </GroupBox>
+        <ListBox Grid.Row="8"
+                 Grid.ColumnSpan="2" 
+                 Margin="2 2 2 2"
+                 ItemsSource="{Binding Students}"
+                 SelectedItem="{Binding SelectedStudent}"
+         />
+
     </Grid>
 </Window>
