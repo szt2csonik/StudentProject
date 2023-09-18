@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StudentProject"
-        xmlns:viewmodel="clr-namespace:StudentProjekt.ViewModel"
         xmlns:xwpftk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:StudentProject"
+        xmlns:viewmodel="clr-namespace:StudentProject.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Diák adatok" Height="480" Width="800">
     <Window.DataContext>
         <viewmodel:StudentViewModel/>
     </Window.DataContext>
@@ -42,25 +42,24 @@
                 Command="{Binding DoSaveCommand}"
                 CommandParameter="{Binding SelectedStudent}"
                 />
-            <Button Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80" Content="Törlés"
+            <Button Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80" Content="Törlés" 
                 Command="{Binding DoRemoveCommand}"
                 CommandParameter="{Binding SelectedStudent}"
             />
         </StackPanel>
-
         <TextBox Grid.Row="1" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding SelectedStudent.LastName}"></TextBox>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding SelectedStudent.FirstName}"></TextBox>
         <DatePicker Grid.Row="3" Grid.Column="1" Margin="2 2 2 2" SelectedDate="{Binding SelectedStudent.BirthsDay}"></DatePicker>
-        <xwpftk:IntegerUpDown Grid.Row="4" Grid.Column="1" Margin="2 2 100 2" Minimum="9" Maximum="14" Value="{Binding SelectedStudent.SchoolYear}"></xwpftk:IntegerUpDown> >
+        <xwpftk:IntegerUpDown Grid.Row="4" Grid.Column="1" Margin="2 2 100 2" Minimum="9" Maximum="14" Value="{Binding SelectedStudent.SchoolYear}"></xwpftk:IntegerUpDown>
         <StackPanel Grid.Row="5" Grid.Column="1">
             <RadioButton GroupName="schoolclass" Margin="2 4 2 2">a  osztály</RadioButton>
             <RadioButton GroupName="schoolclass" Margin="2 4 2 2">b  osztály</RadioButton>
             <RadioButton GroupName="schoolclass" Margin="2 4 2 2">c  osztály</RadioButton>
         </StackPanel>
-        <ComboBox Grid.Row="6" Grid.Column="1" Margin="2 2 2 2" 
-                  ItemsSource="{Binding EducationLevels}"
-                  SelectedItem="{Binding SelectedEducationLevel}"
-                  SelectedIndex="0">
+        <ComboBox Grid.Row="6" Grid.Column="1" Margin="2 2 2 2"
+            ItemsSource="{Binding EducationLevels}"
+            SelectedItem="{Binding SelectedEducationLevel}"
+            SelectedIndex="0">
         </ComboBox>
         <ListBox Grid.Row="8"
                  Grid.ColumnSpan="2" 
@@ -68,6 +67,5 @@
                  ItemsSource="{Binding Students}"
                  SelectedItem="{Binding SelectedStudent}"
          />
-
     </Grid>
 </Window>
