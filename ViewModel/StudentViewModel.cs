@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using StudentProjekt.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace StudentProjekt.ViewModel
 {
@@ -22,10 +23,22 @@ namespace StudentProjekt.ViewModel
 
         [ObservableProperty]
         private Student _selectedStudent;
+
+        private string _selectedEducationLevel = string.Empty;
+        public string SelectedEducationLevel
+        {
+            get => _selectedEducationLevel;
+            set
+            {
+                SetProperty(ref _selectedEducationLevel, value);
+                SelectedStudent.EducationLevel = _selectedEducationLevel;
+            }
+        }
         public StudentViewModel()
         {
             //Students.Add(new Student("Elek", "Teszt", System.DateTime.Now, 9, SchoolClassType.ClassA, ""));
             SelectedStudent = new Student();
+            SelectedEducationLevel = _educationLevels.ElementAt(0);
         }
 
         [RelayCommand]

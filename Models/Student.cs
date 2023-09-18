@@ -34,7 +34,7 @@ namespace StudentProjekt.Models
 
         public override string ToString()
         {
-            return $"{LastName} {FirstName} ({SchoolYear}.{SchoolClass}) - ({String.Format("{0:yyyy.MM.dd.}", BirthsDay)})";
+            return $"{LastName} {FirstName} ({SchoolYear}.{SchoolClass}) - ({String.Format("{0:yyyy.MM.dd.}", BirthsDay)}) ({EducationLevel})";
         }
     }
 }
